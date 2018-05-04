@@ -12,19 +12,21 @@
     </swiper-item>
   </swiper>
 
-  <view class='news-item'>
-    <view class='post-author-date'>
-      <image class = 'author-avatar' src='/images/avatar/1.png'></image>
-      <text class = 'post-date'>Nov 35 2018</text>
+  <block wx:for = "{{postList}}" wx-for-itme = "item">
+    <view class='news-item'>
+      <view class='post-author-date'>
+        <image class='author-avatar' src='/images/avatar/1.png'></image>
+        <text class='post-date'>{{date}}</text>
+      </view>
+      <text class='post-title'>{{title}}</text>
+      <image class='post-image' src='{{}}'></image>
+      <text class='post-content'>入职第一天，我被要求先搭开发环境，给了我一个Excel表格，是一个长长的清单，一个一个安装，然后拉取代码，还要执行一大堆的命令，这都是什么鬼东西！完全不知道自己在干什么。就记得一直报错，各种看不懂！不管怎么说，花了整整一天，总算是搞定了！就这样，凭着崴脚的基础就上手了。刚开始看不懂别人写的代码，全凭自己天马行空的想法去做，一行行流水账似的代码写的我开始怀疑人生.</text>
+      <view class='post-like'>
+        <image class='post-like-image' src='../../images/icon/chat.png'></image>
+        <text class='post-like-font'>92</text>
+        <image class='post-like-image' src='../../images/icon/view.png'></image>
+        <text class='post-like-font'>65</text>
+      </view>
     </view>
-    <text class='post-title'>正是虾肥蟹壮时</text>
-    <image src='/images/post/crab.png'></image>
-    <text class='post-content'>入职第一天，我被要求先搭开发环境，给了我一个Excel表格，是一个长长的清单，一个一个安装，然后拉取代码，还要执行一大堆的命令，这都是什么鬼东西！完全不知道自己在干什么。就记得一直报错，各种看不懂！不管怎么说，花了整整一天，总算是搞定了！就这样，凭着崴脚的基础就上手了。刚开始看不懂别人写的代码，全凭自己天马行空的想法去做，一行行流水账似的代码写的我开始怀疑人生.</text>
-    <view class='post-bottom'>
-      <image src='../../images/icon/chat.png'></image>
-      <text>92</text>
-      <image src='../../images/icon/view.png'></image>
-      <text>65</text>
-    </view>
-  </view>
+  </block>
 </view>

@@ -2,7 +2,7 @@
 <view class='container'>
   <image class='avatar' src="/images/avatar/4.png"></image>
   <text class='name'>Hello，anCheng</text>
-  <view class='moto-container'>
+  <view class='moto-container' bindtap='onStart'>
     <text class='moto'>开启小程序之旅</text>
   </view>
 </view>
