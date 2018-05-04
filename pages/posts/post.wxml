@@ -1,0 +1,8 @@
+<!--pages/posts/post.wxml-->
+<view class='container'>
+  <swiper class = 'banner' indicator-dots='true' circular='true' autoplay='true' interval='3000'>
+    <swiper-item><image src='/images/wx.png'></image></swiper-item>
+    <swiper-item><image src='/images/vr.png'></image></swiper-item>
+    <swiper-item><image src='/images/iqiyi.png'></image></swiper-item>
+  </swiper>
+</view>
