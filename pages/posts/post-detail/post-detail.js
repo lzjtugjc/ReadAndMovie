@@ -51,6 +51,20 @@ Page({
   },
 
   onShareTap: function (event) {
-
+    var itemList = ['分享到微信好友', '分享到朋友圈', '分享到QQ', '分享到QQ空间', '分享到微博'];
+    wx.showActionSheet({
+      itemList: itemList,
+      itemColor: "#405f80",
+      success: function (res) {
+        console.log(res);
+        wx.showModal({
+          title: '用户 ' + itemList[res.tapIndex],
+          content: '现在还不能实现分享',
+        });
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+      }
+    });
   }
 })
