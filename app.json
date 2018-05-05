@@ -3,11 +3,12 @@
     "pages/welcome/welcome",
     "pages/posts/post",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/posts/post-detail/post-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#405f80",
+    "navigationBarTextStyle": "withe"
   }
 }
