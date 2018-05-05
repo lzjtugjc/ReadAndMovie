@@ -1,5 +1,5 @@
 <!--pages/posts/post.wxml-->
-<import src="post-item/post-item-template.wxml"/>
+<import src="post-item/post-item-template.wxml" />
 <view class='container'>
   <swiper class='banner' indicator-dots='true' circular='true' autoplay='true' interval='3000'>
     <swiper-item>
@@ -13,7 +13,8 @@
     </swiper-item>
   </swiper>
 
-  <block wx:for = "{{postList}}" wx-for-itme = "item">
-    <template is= "postItem" data = "{{item}}"/>
+  <block wx:for="{{postList}}" wx-for-itme="item">
+    <!--...将对象平铺开  -->
+    <template is="postItem" data="{{...item}}" />
   </block>
 </view>
