@@ -61,7 +61,7 @@
   vertical-align: middle;
 }
 
-.collection, .share {
+.circle-img image {
   width: 90rpx;
   margin-left: 30rpx;
   height: 90rpx;
