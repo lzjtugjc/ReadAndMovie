@@ -1,20 +1,20 @@
 <!--pages/posts/post.wxml-->
 <import src="post-item/post-item-template.wxml" />
 <view class='container'>
-  <swiper class='banner' indicator-dots='true' circular='true' autoplay='true' interval='3000'>
+  <swiper class='banner' indicator-dots='true' catchtap='onSwiperDetailTap' circular='true' autoplay='true' interval='3000'>
     <swiper-item>
-      <image src='/images/wx.png'></image>
+      <image src='/images/wx.png' data-post-id="3"></image>
     </swiper-item>
     <swiper-item>
-      <image src='/images/vr.png'></image>
+      <image src='/images/vr.png' data-post-id="4"></image>
     </swiper-item>
     <swiper-item>
-      <image src='/images/iqiyi.png'></image>
+      <image src='/images/iqiyi.png' data-post-id="5"></image>
     </swiper-item>
   </swiper>
 
   <block wx:for="{{postList}}" wx-for-itme="item">
-    <view catchtap='onDetail' data-post-id = "{{item.postId}}" data-post-length = "{{postList.length}}">
+    <view catchtap='onDetail' data-post-id="{{item.postId}}" data-post-length="{{postList.length}}">
       <!--...将对象平铺开  -->
       <template is="postItem" data="{{...item}}" />
     </view>

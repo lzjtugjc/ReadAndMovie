@@ -1,0 +1,10 @@
+<!--pages/starts/stars.wxml-->
+<template name='startsTemplate'>
+  <view class='stars-container'>
+    <view class='stars'>
+      <image wx:for = "{{star}}" src='/images/icon/star.png'></image>
+      <image wx:for = "{{5 - star}}"src='/images/icon/none-star.png'></image>
+    </view>
+    <text class='star-score'>{{score}}</text>
+  </view>
+</template>

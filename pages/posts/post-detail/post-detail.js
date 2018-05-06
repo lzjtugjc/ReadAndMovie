@@ -1,12 +1,13 @@
 // pages/posts/post-detail/post-detail.js
 var postsData = require('../../../data/posts-data.js');
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isPlayingMusic: app.globalData.g_isPlayingMusic
   },
 
   /**
@@ -20,14 +21,48 @@ Page({
 
     var postsCollected = wx.getStorageSync('poset_Collected');
     if (postsCollected) {
-      this.setData({
-        collected: postsCollected[postId]
-      });
+      if (postsCollected[postId]){
+        this.setData({
+          collected: postsCollected[postId]
+        });
+      }else{
+        postsCollected[postId] = false;
+        wx.setStorageSync('poset_Collected', postsCollected);
+      }
     } else {
       var postsCollected = {};
       postsCollected[postId] = false;
       wx.setStorageSync('poset_Collected', postsCollected);
+    };
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId == postId) {
+      this.setData({
+        isPlayingMusic: true
+      });
     }
+    this.setMusciMonitor();
+  },
+  /**
+   * 设置音乐播放监听
+   */
+  setMusciMonitor: function () {
+    var self = this;
+    wx.onBackgroundAudioPause(function () {
+      self.setData({
+        isPlayingMusic: false
+      });
+      app.globalData.g_isPlayingMusic = false;
+    });
+
+    wx.onBackgroundAudioPlay(function () {
+      self.setData({
+        isPlayingMusic: true
+      });
+      app.globalData.g_isPlayingMusic = true;
+    });
+  },
+
+  onHide: function () {
+
   },
 
   onCollectionTap: function (event) {
@@ -66,5 +101,29 @@ Page({
         console.log(res.errMsg);
       }
     });
-  }
+  },
+
+  onMusicTap: function (event) {
+    var isPlayingMusic = this.data.isPlayingMusic;
+    if (isPlayingMusic) {
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic: false
+      });
+      app.globalData.g_isPlayingMusic = false;
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: this.data.music.url,
+        title: this.data.music.title,
+        coverImgUrl: this.data.music.coverImg,
+      });
+
+      this.setData({
+        isPlayingMusic: true
+      });
+      app.globalData.g_currentMusicPostId = this.data.postId;
+      app.globalData.g_isPlayingMusic = true;
+    }
+  },
+
 })
