@@ -1,16 +1,25 @@
 <!--pages/movie/movie.wxml-->
 <import src='movie-list/movie-list-template.wxml' />
-<view class='container'>
+<import src='movie-grid/movie-grid-template.wxml' />
+<view class='search'>
+  <icon type='search' size='13' class='search-img' color='#405f80'>string</icon>
+  <input type='text' placeholder='后来的我们' value='{{inputValue}}' placeholder-class='placeholder' bindfocus='onBindFocus' bindconfirm='onBindConfirm' />
+  <image wx:if='{{searchPanelShow}}' class='cancel' src='/images/icon/xx.png' catchtap='onCancelTap'></image>
+</view>
+<view class='container' wx:if='{{containerShow}}'>
   <view class='movies-template'>
-    <template is='movieListTemplate' data = "{{...inTheaters}}"/>
+    <template is='movieListTemplate' data="{{...inTheaters}}" />
   </view>
 
   <view class='movies-template'>
-    <template is='movieListTemplate'  data = "{{...comingSoon}}"/>
+    <template is='movieListTemplate' data="{{...comingSoon}}" />
   </view>
 
-  <view class='movies-template' >
-    <template is='movieListTemplate' data = "{{...top250}}"/>
+  <view class='movies-template'>
+    <template is='movieListTemplate' data="{{...top250}}" />
   </view>
+</view>
 
+<view class='search-panel' wx:if='{{searchPanelShow}}'>
+  <template is='movieGrideTemplate' data="{{...searchResult}}" />
 </view>

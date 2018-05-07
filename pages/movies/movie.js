@@ -5,7 +5,11 @@ Page({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250: {}
+    top250: {},
+    searchResult: {},
+    containerShow: true,
+    searchPanelShow: false,
+    inputValue: ""
   },
   onLoad: function (event) {
     var inTheatersUrl = app.globalData.host + "/v2/movie/in_theaters";
@@ -68,11 +72,42 @@ Page({
 
   onMoreMovieTap: function (event) {
     var category = event.currentTarget.dataset.category;
-    if(!category){
+    if (!category) {
       return;
     }
     wx.navigateTo({
       url: 'more-movie/more-movie?category=' + category,
     });
+  },
+
+  onBindFocus: function (event) {
+    this.setData({
+      containerShow: false,
+      searchPanelShow: true
+    });
+  },
+
+  onBindConfirm: function (event) {
+    var text = event.detail.value;
+    var searchUrl = app.globalData.host + "/v2/movie/search?q=" + text;
+    console.log("onBindConfirm  " + event.detail.value);
+    this.getMovieListData(searchUrl, "searchResult", "");
+  },
+
+  onCancelTap: function (event) {
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult: {},
+      inputValue: ""
+    });
+  },
+
+  onMovieDetail: function (event) {
+    var movieId = event.currentTarget.dataset.movieId;
+    // console.log("onMovieDetail" + movieId);
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    })
   }
 })

@@ -95,5 +95,12 @@ Page({
   onPullDownRefresh: function (event) {
     //获取数据
     util.http(this.data.dataUrl, 0, 12, false, this.callBack);
+  },
+  onMovieDetail: function (event) {
+    var movieId = event.currentTarget.dataset.movieId;
+    // console.log("onMovieDetail" + movieId);
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
   }
 })

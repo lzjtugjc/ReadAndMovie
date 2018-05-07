@@ -21,11 +21,11 @@ Page({
 
     var postsCollected = wx.getStorageSync('poset_Collected');
     if (postsCollected) {
-      if (postsCollected[postId]){
+      if (postsCollected[postId]) {
         this.setData({
           collected: postsCollected[postId]
         });
-      }else{
+      } else {
         postsCollected[postId] = false;
         wx.setStorageSync('poset_Collected', postsCollected);
       }
@@ -51,6 +51,7 @@ Page({
         isPlayingMusic: false
       });
       app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
     });
 
     wx.onBackgroundAudioPlay(function () {
@@ -59,6 +60,14 @@ Page({
       });
       app.globalData.g_isPlayingMusic = true;
     });
+
+    wx.onBackgroundAudioStop(function () {
+      self.setData({
+        isPlayingMusic: false
+      });
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    })
   },
 
   onHide: function () {
