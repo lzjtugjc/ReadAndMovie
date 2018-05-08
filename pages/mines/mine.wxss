@@ -1,1 +1,78 @@
 /* pages/mines/mine.wxss */
+
+page {
+  background-color: #f0f0f0;
+}
+
+text {
+  font-size: 12px;
+  color: #333;
+}
+
+.page-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-body-button {
+  width: 100%;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  height: 230rpx;
+  box-shadow: 0 0 2px #888;
+}
+
+.page-body {
+  width: 100%;
+}
+
+.userinfo-avatar {
+  margin: 10px auto 0;
+  border-radius: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.userinfo-nickname {
+  width: 100%;
+  margin: 10px auto 0rpx;
+  text-align: center;
+  font-size: 38rpx;
+}
+
+.clear-cache {
+  margin-top: 10px;
+  width: 100%;
+  padding-left: 30px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+}
+
+.mine_location,.scan_container {
+  background: white;
+  width: 100%;
+  margin-top: 1px;
+  padding-left: 30px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.servicer{
+  position: absolute;
+  bottom: 80px;
+  right: 20rpx;
+}

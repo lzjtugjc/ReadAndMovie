@@ -1,7 +1,5 @@
 /* pages/posts/post.wxss */
 @import "post-item/post-item-template.wxss";
-page {
-}
 
 .container {
   background: white;

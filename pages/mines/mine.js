@@ -1,66 +1,88 @@
-// pages/mines/mine.js
+var app = getApp()
 Page({
+  onLoad: function () {
+    this.setData({
+      hasLogin: app.globalData.hasLogin,
+      userInfo: app.globalData.userInfo
+    })
+  },
+  data: {},
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-  
+  onClearCache: (event) => {
+    wx.showModal({
+      content: "是否清除所有缓存？",
+      success: (res) => {
+        if (res.confirm) {
+          //清除缓存
+          wx.clearStorage();
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onScanCodeTap:(event)=>{
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        wx.showToast({
+          title: res.result,
+        })
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  onMineLocationTap: (event) => {
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        wx.openLocation({
+          latitude: latitude,
+          longitude: longitude,
+          scale: 28
+        })
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
+  login: function () {
+    var that = this
+    wx.login({
+      // success: function (res) {
+      //   app.globalData.hasLogin = true
+      //   that.setData({
+      //     hasLogin: true
+      //   })
+      //   wx.getUserInfo({
+      //     success: function (res) {
+      //       var userInfo = res.userInfo
+      //       var nickName = userInfo.nickName
+      //       var avatarUrl = userInfo.avatarUrl
+      //       var gender = userInfo.gender //性别 0：未知、1：男、2：女
+      //       var province = userInfo.province
+      //       var city = userInfo.city
+      //       var country = userInfo.country
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
+      //     }
+      //   })
+      // }
+      success: (res) => {
+        app.globalData.hasLogin = true;
+        this.setData({
+          hasLogin: true
+        });
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+        wx.getUserInfo({
+          success: (res) => {
+            var userInfo = res.userInfo;
+            app.globalData.userInfo = userInfo;
+            this.setData({
+              userInfo: userInfo
+            })
+          }
+        });
+      }
+    })
   }
 })

@@ -1,2 +1,28 @@
 <!--pages/mines/mine.wxml-->
-<text>pages/mines/mine.wxml</text>
+<view class="page-body">
+  <view class="page-section">
+    <block wx:if="{{true}}">
+      <view class='user-info-container'>
+        <image class='userinfo-avatar' src='/images/vr.png' />
+        <text class='userinfo-nickname'>昵称</text>
+      </view>
+      <view class='clear-cache' catchtap='onClearCache'>
+        <text>清理缓存</text>
+      </view>
+      <view class='mine_location' catchtap='onMineLocationTap'>
+        <text>我的位置</text>
+      </view>
+      <view class='scan_container' catchtap='onScanCodeTap'>
+        <text>扫一扫</text>
+      </view>
+  
+     
+
+    </block>
+    <block wx:if="{{false}}">
+      <text class="page-body-text">每个微信号中仅需登录一次</text>
+      <button class="page-body-button" type="primary" bindtap="login">微信登录</button>
+    </block>
+  </view>
+<button class='servicer'open-type="contact" size='mini' type='warn'>客服</button>
+</view>

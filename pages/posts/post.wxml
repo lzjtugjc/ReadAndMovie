@@ -13,7 +13,7 @@
     </swiper-item>
   </swiper>
 
-  <block wx:for="{{postList}}" wx-for-itme="item">
+  <block wx:for="{{postList}}" wx-for-itme="item" wx:key="postId">
     <view catchtap='onDetail' data-post-id="{{item.postId}}" data-post-length="{{postList.length}}">
       <!--...将对象平铺开  -->
       <template is="postItem" data="{{...item}}" />
