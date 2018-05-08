@@ -7,13 +7,16 @@
         <text class='userinfo-nickname'>昵称</text>
       </view>
       <view class='clear-cache' catchtap='onClearCache'>
-        <text>清理缓存</text>
+        <text class='mine-text'>清理缓存</text>
       </view>
       <view class='mine_location' catchtap='onMineLocationTap'>
-        <text>我的位置</text>
+        <text class='mine-text'>我的位置</text>
       </view>
       <view class='scan_container' catchtap='onScanCodeTap'>
-        <text>扫一扫</text>
+        <text class='mine-text'>扫一扫</text>
+      </view>
+      <view class='address_container' catchtap='onAddressTap'>
+        <text class='mine-text'>我的地址</text>
       </view>
   
      
@@ -24,5 +27,7 @@
       <button class="page-body-button" type="primary" bindtap="login">微信登录</button>
     </block>
   </view>
-<button class='servicer'open-type="contact" size='mini' type='warn'>客服</button>
+
+  <view class='service-container'><button class='servicer'open-type="contact" /> <image src='/images/icon/service.png'/></view>
+
 </view>

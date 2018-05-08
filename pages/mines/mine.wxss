@@ -5,7 +5,7 @@ page {
 }
 
 text {
-  font-size: 12px;
+  font-size: 14px;
   color: #333;
 }
 
@@ -52,27 +52,42 @@ text {
 .clear-cache {
   margin-top: 10px;
   width: 100%;
-  padding-left: 30px;
-  height: 45px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   background: white;
 }
 
-.mine_location,.scan_container {
+.mine-text{
+  margin-left: 15px;
+}
+.mine_location, .scan_container ,.address_container{
   background: white;
   width: 100%;
   margin-top: 1px;
-  padding-left: 30px;
   height: 45px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.servicer{
+.service-container {
   position: absolute;
   bottom: 80px;
+  width: 80rpx;
+  height: 80rpx;
   right: 20rpx;
+}
+
+.service-container image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.service-container button {
+  opacity: 0;
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
 }
