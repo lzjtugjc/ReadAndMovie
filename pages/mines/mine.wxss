@@ -19,6 +19,7 @@ text {
 }
 
 .page-body-button {
+  margin-top: 30px;
   width: 100%;
 }
 
@@ -26,17 +27,18 @@ text {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
   background-color: white;
-  height: 230rpx;
+  padding: 20px 0;
   box-shadow: 0 0 2px #888;
 }
 
-.page-body {
+.page-container {
   width: 100%;
 }
 
 .userinfo-avatar {
-  margin: 10px auto 0;
+  text-align: center;
   border-radius: 128rpx;
   width: 128rpx;
   height: 128rpx;
@@ -59,10 +61,11 @@ text {
   background: white;
 }
 
-.mine-text{
+.mine-text {
   margin-left: 15px;
 }
-.mine_location, .scan_container ,.address_container{
+
+.mine_location, .scan_container, .address_container, .module_container {
   background: white;
   width: 100%;
   margin-top: 1px;
@@ -90,4 +93,15 @@ text {
   position: absolute;
   width: 80rpx;
   height: 80rpx;
+}
+
+.menu-container {
+  width: 100%;
+  margin-top: 10px;
+  border-top: 1px solid #e5e5e5;
+  font-size: 14px;
+}
+
+.no_login_container {
+  padding-top: 150px;
 }

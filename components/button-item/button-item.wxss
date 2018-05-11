@@ -1,0 +1,26 @@
+/* component/button-item/button-item.wxss */
+
+.item-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.item-container view {
+  color: #333;
+  padding:0 10px;
+  height: 45px;
+  line-height: 45px;
+  box-sizing: border-box;
+}
+
+.item-container image {
+  margin: auto 10px auto 0;
+  width: 16px;
+  height: 16px;
+}

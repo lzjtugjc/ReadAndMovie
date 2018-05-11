@@ -1,0 +1,5 @@
+<!--components/custom-checkbox/custom-checkbox.wxml-->
+<view>
+  <checkbox id='checkbox' checked> </checkbox>
+  <label for="checkbox" class='label' bindtap='labelTap'>{{title}}</label>
+</view>

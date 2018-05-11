@@ -1,33 +1,27 @@
 <!--pages/mines/mine.wxml-->
-<view class="page-body">
+<view class="container">
   <view class="page-section">
-    <block wx:if="{{true}}">
+    <block wx:if="{{userInfo != null}}">
       <view class='user-info-container'>
-        <image class='userinfo-avatar' src='/images/vr.png' />
-        <text class='userinfo-nickname'>昵称</text>
+        <image class='userinfo-avatar' src='{{userInfo.avatarUrl}}' />
+        <text class='userinfo-nickname'>{{userInfo.nickName}}</text>
       </view>
-      <view class='clear-cache' catchtap='onClearCache'>
-        <text class='mine-text'>清理缓存</text>
+      <view class='menu-container'>
+        <button-item title='清理缓存' src='/images/icon/icon-arrow.png' catchonClick='onClearCache' />
+        <button-item title='我的位置' src='/images/icon/icon-arrow.png' catchonClick='onMineLocationTap' />
+        <button-item title='扫一扫' src='/images/icon/icon-arrow.png' catchonClick='onScanCodeTap' />
+        <button-item title='我的地址' src='/images/icon/icon-arrow.png' catchonClick='onAddressTap' />
+        <button-item title='设置' src='/images/icon/icon-arrow.png' catchonClick='onSettingTap' />
       </view>
-      <view class='mine_location' catchtap='onMineLocationTap'>
-        <text class='mine-text'>我的位置</text>
-      </view>
-      <view class='scan_container' catchtap='onScanCodeTap'>
-        <text class='mine-text'>扫一扫</text>
-      </view>
-      <view class='address_container' catchtap='onAddressTap'>
-        <text class='mine-text'>我的地址</text>
-      </view>
-  
-     
 
+      <view class='service-container'>
+        <button class='servicer' open-type="contact" />
+        <image src='/images/icon/service.png' />
+      </view>
     </block>
-    <block wx:if="{{false}}">
+    <view class='no_login_container' wx:else>
       <text class="page-body-text">每个微信号中仅需登录一次</text>
-      <button class="page-body-button" type="primary" bindtap="login">微信登录</button>
-    </block>
+      <button class="page-body-button" type="primary" open-type='getUserInfo' bindgetuserinfo="userInfoHandler">微信登录</button>
+    </view>
   </view>
-
-  <view class='service-container'><button class='servicer'open-type="contact" /> <image src='/images/icon/service.png'/></view>
-
 </view>

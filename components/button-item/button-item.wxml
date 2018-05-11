@@ -1,0 +1,5 @@
+<!--component/button-item/button-item.wxml-->
+<view class='item-container' catchtap='labelTap'>
+  <view>{{title}}</view>
+  <image src='{{src}}'></image>
+</view>
