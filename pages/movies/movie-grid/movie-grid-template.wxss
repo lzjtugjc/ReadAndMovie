@@ -2,10 +2,6 @@
 
 .single-view-container {
   float: left;
+  width: 33.3%;
   margin-bottom: 40rpx;
-}
-
-.grid-container{
-  height: 1100rpx;
-  padding: 40rpx 0 40rpx 6rpx;
 }
