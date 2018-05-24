@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "我的"
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "custom-checkbox": "/components/custom-checkbox/custom-checkbox",
+    "zan-actionsheet": "/components/actionsheet/index",
+    "button-item": "/components/button-item/button-item"
+  }
 }

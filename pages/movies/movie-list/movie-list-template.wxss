@@ -7,14 +7,15 @@
 }
 
 .movie-head {
-  padding: 30rpx 20rpx 22rpx;
+  padding: 30rpx 29rpx 22rpx;
 }
+
 .slogan {
   font-size: 24rpx;
 }
 
 .more {
-   float: right; 
+  float: right;
 }
 
 .more-text {
@@ -32,8 +33,9 @@
 .movies-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .inner-container {
-  margin: 0 atuo 20rpx;
+  padding: 0 atuo 35rpx;
 }

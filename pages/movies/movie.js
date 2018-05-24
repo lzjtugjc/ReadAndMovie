@@ -12,6 +12,10 @@ Page({
     inputValue: ""
   },
   onLoad: function (event) {
+    this.getMovieListCache("inTheaters");
+    this.getMovieListCache("comingSoon");
+    this.getMovieListCache("top250");
+  
     var inTheatersUrl = app.globalData.host + "/v2/movie/in_theaters";
     var comingSoonUrl = app.globalData.host + '/v2/movie/coming_soon';
     var top250Url = app.globalData.host + '/v2/movie/top250';
@@ -21,6 +25,11 @@ Page({
     this.getMovieListData(top250Url, "top250", "豆瓣Top250");
   },
 
+  getMovieListCache: function (key){
+    let data = wx.getStorageSync(key);
+    console.log("获取到的缓存为 ： " + data);
+    this.setData(data);
+  },
   getMovieListData: function (url, settedKey, categoryTitle) {
     var self = this;
     wx.request({
@@ -62,11 +71,18 @@ Page({
     }
     console.log("movies : " + movies);
 
-    var readyData = {};
+    let readyData = {};
     readyData[settedKey] = {
       movies: movies,
       categoryTtile: categoryTtile
     };
+    wx.setStorage({
+      key: settedKey,
+      data: readyData,
+      success: (res) => {
+        console.log("保存成功");
+      }
+    })
     this.setData(readyData);
   },
 

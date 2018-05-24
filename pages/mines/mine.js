@@ -1,12 +1,21 @@
-var app = getApp()
+let app = getApp()
 Page({
   onLoad: function () {
-    this.setData({
-      hasLogin: app.globalData.hasLogin,
-      userInfo: app.globalData.userInfo
-    })
+    let updateTime = wx.getStorageSync(('userInfoUpdateTime'));
+    if (updateTime > 0) {
+      let time = Date.now() - updateTime;
+      if (time < (2 * 24 * 60 * 60 * 1000)) {
+        let useInfo = wx.getStorageSync("userInfo");
+        this.setData({
+          userInfo: useInfo
+        })
+      }
+    }
   },
-  data: {},
+  data: {
+    hasLogin: app.globalData.hasLogin,
+    userInfo: null
+  },
 
   onClearCache: (event) => {
     wx.showModal({
@@ -28,6 +37,13 @@ Page({
           title: res.result,
         })
       }
+    })
+  },
+
+  onSettingTap: (event) => {
+    wx.showToast({
+      title: '您点击了设置',
+      icon: 'none'
     })
   },
 
@@ -61,43 +77,14 @@ Page({
     });
   },
 
-  login: function () {
-    var that = this
-    wx.login({
-      // success: function (res) {
-      //   app.globalData.hasLogin = true
-      //   that.setData({
-      //     hasLogin: true
-      //   })
-      //   wx.getUserInfo({
-      //     success: function (res) {
-      //       var userInfo = res.userInfo
-      //       var nickName = userInfo.nickName
-      //       var avatarUrl = userInfo.avatarUrl
-      //       var gender = userInfo.gender //性别 0：未知、1：男、2：女
-      //       var province = userInfo.province
-      //       var city = userInfo.city
-      //       var country = userInfo.country
-
-      //     }
-      //   })
-      // }
-      success: (res) => {
-        app.globalData.hasLogin = true;
-        this.setData({
-          hasLogin: true
-        });
-
-        wx.getUserInfo({
-          success: (res) => {
-            var userInfo = res.userInfo;
-            app.globalData.userInfo = userInfo;
-            this.setData({
-              userInfo: userInfo
-            })
-          }
-        });
-      }
-    })
+  userInfoHandler: function (event) {
+    let userInfo = event.detail.userInfo;
+    console.log(userInfo);
+    this.setData({
+      userInfo: userInfo
+    });
+    app.globalData.userInfo = userInfo;
+    wx.setStorageSync("userInfoUpdateTime", Date.now());
+    wx.setStorageSync("userInfo", userInfo);
   }
 })
